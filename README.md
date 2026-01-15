@@ -30,9 +30,6 @@ Using Microsoft Azure and Entra ID, the goal is to create groups of users (Emplo
 
 
 
-
-<h1>Azure Virtual Machine Setup:</h1>
-
 <p align="left">
 
 <h2>Setting Up Users and Groups</h2>
@@ -45,6 +42,7 @@ Make sure in the passwordd section you copy and save that password somewhere, th
 <img src="https://i.imgur.com/s9cQ4qx.png" height="80%" width="80%" alt="EntraID"/>
 <br/>
 <br/>
+
 Click "Review + Create" then "Create" again <br/>
 You now have your first employee user! Now go to "add" and create another new user <br/>
 This time we're making the admin, so under "User Principal name" enter something like Admin or Admin1 <br/>
@@ -79,8 +77,6 @@ Add your Admin user and Break-Glass-Admin user <br/>
 <br/>
 <br/>
 
-
-
 Now let's make sure MFA and SMS is enabled <br/>
 On the left menu select "security" then click "Authentication" methods <br/>
 Check to see if both SMS and Microsoft Authenticator are enabled <br/>
@@ -90,23 +86,100 @@ If not, click on the option (Ex: SMS) and toggle the "Enable" slider to on (blue
 <br/>
 <br/>
 
-
 Now we need to create conditional access policies <br/>
 Go back to the "Security" page and click on "Conditional Access" <br/>
 Note: for the following steps you may need the Entra ID PD 2 trial <br/>
 Click on "Create New policy" <br/>
+For name pick something like "Require MFA for All Users" <br/>
 Click on "Users" and select "All Users" <br/>
 In the section click on "exclude" and Choose the Break-Glass-Admin user <br/>
 Click on "Target Resources" and select "All Resources" <br/>
-<em>Note: don't mind the other resource groups you see in my screenshot, those were just for fun, you will only have the one you made</em> <br/>
-<img src="https://i.imgur.com/zbXYz16.png" height="80%" width="80%" alt="EntraID"/>
+Click on "Grant", make sure "grant access" is selected and click on the "require multifactor authentication" <br/>
+At the bottom make sure "Enable Policy" is ON <br/>
+<img src="https://i.imgur.com/OoCqhoW.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+Let's head back to the main Azure Page <br/>
+Search for and click on "resource group" <br/>
+Name it something like Test or Lab <br/>
+Click Create <br/>
+<img src="https://i.imgur.com/ez3bbJp.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+Now let's set read and contribute permissions for each group <br/>
+Click on the resource you just created <br/>
+On the left side click on "Access Control (IAM)" <br/>
+At the top click on "Add" and then "Add role assignment" <br/>
+Search for "Reader" and click on it <br/>
+At the top select "Members" section <br/>
+Click the blue "+ Select members" text <br/>
+Choose your Employees Group <br/>
+Click "Review + Assign" <br/>
+<img src="https://i.imgur.com/yoDudfH.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+
+Now let's create another new role assignment <br/>
+Click the "Privileged administrator roles" section <br/>
+Select "Contributor" and go the the "Members" section <br/>
+Add the Admins Group as the member <br/>
+Click "Review + Assign" <br/>
+<img src="https://i.imgur.com/niOqRxr.png" height="80%" width="80%" alt="EntraID"/>
 <br/>
 <br/>
 
 
 
 
-<h2>Creating a Vritual Network</h2>
+<h2>Testing Employees and Admins</h2>
+
+We've set all the users and policies in place, we can begin testing them (Note: feel free to add more users to either group if you want) <br/>
+Go to your Entra ID main page, and on the left menu click on "Users" <br/>
+Look for the user you want to login to and copy the name under "User Principal Name" <br/>
+<img src="https://i.imgur.com/32EVqN4.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+Open a new incognito window and navigate to the azure portal page: https://portal.azure.com <br/>
+Enter the name you copied earlier and the password you saved <br/>
+Now you will be required to use the Microsoft Authenticator app to verify your identity <br/>
+After that you will be prompted to enter a new password, go through the rest of the setup steps <br/>
+Once done you should be logged in as the user you chose <br/>
+<img src="https://i.imgur.com/oZRTfAB.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+Let's check to see if our other policies such as Reader and Contributer are working <br/>
+If you are signed in as employee you should only have Reader permissions and can't create new things <br/>
+To test this go to "Resource Groups" or "Virtual Machines" <br/>
+At the top you should see a message and in there it says "Code:AccesDenied" <br/>
+This means our employee Reader policy is working! <br/>
+<img src="https://i.imgur.com/lqem0XB.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+
+Now let's test the Admin user <br/>
+Login to the Admin account doing the same setup steps you had to for the employee account <br/>
+To test this go to "Resource Groups" or "Virtual Machines" <br/>
+You should be able to view the resource groups that are available and create a new resource group (same thing with the virtual machines) <br/>
+<img src="https://i.imgur.com/iu82rrh.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+<h2>Checking the Sign-in logs</h2>
+
+On your main account head back to the Entra ID home page <br/>
+On the left menu, under "Monitoring" click "Sign-in logs" <br/>
+Here you can see your users under "user principal name" or "users" <br/>
+You can see whether or not your conditional access policies were successful under "conditional access" with a success or Failure <br/>
+(Note: if your status under "status" was interupted, this was most likely during your inital new login process so failure for the conditional access is expected) <br/>
+<img src="https://i.imgur.com/hK7QFnw.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
 
 
 
