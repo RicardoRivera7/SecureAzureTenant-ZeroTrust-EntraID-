@@ -13,6 +13,7 @@ Conditional Access policies enforce MFA <br/>
 Azure Role-Based Access Control restricts access at the resource group level <br/>
 Sign-in logs are used to validate and audit access decisions </b> <br/>
 
+Bonus: A Break-Glass-Admin is created, it does not need MFA and is used in emergencies when services and functions are not working such as MFA itself </b> <br/>
 
 
 <h2>Prerequisites</h2>
@@ -191,6 +192,6 @@ You can see whether or not your conditional access policies were successful unde
 <br/>
 <br/>
 
-
+Bonus: Don't forget to make sure to test your Break-Glass-Admin by logging into it, to test it works make sure when you login that MFA is not required and that you can create resoruce groups!
 
 </p>
