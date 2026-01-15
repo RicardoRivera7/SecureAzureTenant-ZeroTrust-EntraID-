@@ -11,7 +11,7 @@ Users and Admins are created and added to groups <br/>
 Entra ID iss ussed to authenticate users attempting to login <br/>
 Conditional Access policies enforce MFA <br/>
 Azure Role-Based Access Control restricts access at the resource group level <br/>
-Sign-in logs are used to validate and audit access decisions </b> <br/>
+Sign-in logs are used to validate and audit access decisions  <br/>
 
 Bonus: A Break-Glass-Admin is created, it does not need MFA and is used in emergencies when services and functions are not working such as MFA itself </b> <br/>
 
