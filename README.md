@@ -194,6 +194,6 @@ You can see whether or not your conditional access policies were successful unde
 <br/>
 <br/>
 
-Bonus: Don't forget to make sure to test your Break-Glass-Admin by logging into it, to test it works make sure when you login that MFA is not required and that you can create resoruce groups!
+Bonus: Don't forget to make sure to test your Break-Glass-Admin by logging into it, to test it works make sure when you login that MFA is not required and that you can create resource groups!
 
 </p>
