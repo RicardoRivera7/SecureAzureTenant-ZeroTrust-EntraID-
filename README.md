@@ -5,6 +5,16 @@
 Using Microsoft Azure and Entra ID, the goal is to create groups of users (Employees, Admins) then setting Role Based Acess Controls, and conditional access controls such as Multifactor Authentication. We will then test these controls by signing into different accounts to see if they work as intended.
 <br />
 
+<h2>Architecture Summary</h2> 
+<b> 
+Users and Admins are created and added to groups <br/>
+Entra ID iss ussed to authenticate users attempting to login <br/>
+Conditional Access policies enforce MFA <br/>
+Azure Role-Based Access Control restricts access at the resource group level <br/>
+Sign-in logs are used to validate and audit access decisions </b> <br/>
+
+
+
 <h2>Prerequisites</h2>
 - <b>Make a Microsoft Azure Account: https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account </b> <br/>
 - <b>Download Microsoft Authenticator App on your phone (This will be needed for MFA) </b> 
@@ -77,7 +87,7 @@ Add your Admin user and Break-Glass-Admin user <br/>
 <br/>
 <br/>
 
-Now let's make sure MFA and SMS is enabled <br/>
+Now let's make sure Authenticator and SMS is enabled <br/>
 On the left menu select "security" then click "Authentication" methods <br/>
 Check to see if both SMS and Microsoft Authenticator are enabled <br/>
 If not, click on the option (Ex: SMS) and toggle the "Enable" slider to on (blue) <br/>
@@ -88,7 +98,7 @@ If not, click on the option (Ex: SMS) and toggle the "Enable" slider to on (blue
 
 Now we need to create conditional access policies <br/>
 Go back to the "Security" page and click on "Conditional Access" <br/>
-Note: for the following steps you may need the Entra ID PD 2 trial <br/>
+Note: for the following steps you may need the Entra ID P2 trial <br/>
 Click on "Create New policy" <br/>
 For name pick something like "Require MFA for All Users" <br/>
 Click on "Users" and select "All Users" <br/>
@@ -155,7 +165,7 @@ Once done you should be logged in as the user you chose <br/>
 Let's check to see if our other policies such as Reader and Contributer are working <br/>
 If you are signed in as employee you should only have Reader permissions and can't create new things <br/>
 To test this go to "Resource Groups" or "Virtual Machines" <br/>
-At the top you should see a message and in there it says "Code:AccesDenied" <br/>
+At the top you should see a message and in there it says "Code:AccessDenied" <br/>
 This means our employee Reader policy is working! <br/>
 <img src="https://i.imgur.com/lqem0XB.png" height="80%" width="80%" alt="EntraID"/>
 <br/>
