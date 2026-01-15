@@ -6,7 +6,7 @@ Using Microsoft Azure and Entra ID, the goal is to create groups of users (Emplo
 <br />
 
 <h2>Prerequisites</h2>
-- <b>Make a Microsoft Azure Account: https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account </b>
+- <b>Make a Microsoft Azure Account: https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account </b> <br/>
 - <b>Download Microsoft Authenticator App on your phone (This will be needed for MFA) </b> 
 
 
