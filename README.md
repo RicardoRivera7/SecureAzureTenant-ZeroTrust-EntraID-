@@ -8,7 +8,7 @@ Using Microsoft Azure and Entra ID, the goal is to create groups of users (Emplo
 <h2>Architecture Summary</h2> 
 <b> 
 Users and Admins are created and added to groups <br/>
-Entra ID iss ussed to authenticate users attempting to login <br/>
+Entra ID is used to authenticate users attempting to login <br/>
 Conditional Access policies enforce MFA <br/>
 Azure Role-Based Access Control restricts access at the resource group level <br/>
 Sign-in logs are used to validate and audit access decisions  <br/>
@@ -66,7 +66,7 @@ Remeber to save the password for this account too <br/>
 <br/>
 
 Click the blue "Review + Create" button then click the "Create" button <br/>
-We will create one more user, this user will be for admin emergencies only so that things like MFA aren't needed in case there are issues with services or functions like that <br/>
+We will create one more user, this user will be for admin emergencies only so that things like MFA aren't needed in case there are isues with services or functions like that <br/>
 Create a new user and for both name fields name them Break-Glass-Admin <br/>
 Make sure you save the password somewhere and create the user <br/>
 <br/>
@@ -120,7 +120,7 @@ Click Create <br/>
 <br/>
 <br/>
 
-Now let's set read and contribute permissions for each group <br/>
+Now let's set read and contribute permisions for each group <br/>
 Click on the resource you just created <br/>
 On the left side click on "Access Control (IAM)" <br/>
 At the top click on "Add" and then "Add role assignment" <br/>
@@ -167,7 +167,7 @@ Once done you should be logged in as the user you chose <br/>
 <h4>Verifying Role assignments</h4>
 
 Let's check to see if our other policies such as Reader and Contributor are working <br/>
-If you are signed in as employee you should only have Reader permissions and can't create new things <br/>
+If you are signed in as employee you should only have Reader permisions and can't create new things <br/>
 To test this go to "Resource Groups" or "Virtual Machines" <br/>
 You should see the Resource group you created, click on it to go into it <br/>
 <img src="https://i.imgur.com/VzUEbwi.png" height="80%" width="80%" alt="EntraID"/>
@@ -192,7 +192,7 @@ Login to the Admin account doing the same setup steps you had to for the employe
 To test this go to "Resource Groups" or "Virtual Machines" <br/>
 You should see the Resource group you created, click on it to go into it <br/>
 Like with the employee account try and create an alert <br/>
-This time you'll still get an error message but it should be different, thiss will be an error to do with the free subsscription not being able to use this service <br/>
+This time you'll still get an error message but it should be different, this will be an error to do with the free subsscription not being able to use this service <br/>
 If you see this new error message congrats the Admin Contributor policy works <br/>
 <img src="https://i.imgur.com/UztYbyH.png" height="80%" width="80%" alt="EntraID"/>
 <br/>
@@ -204,7 +204,7 @@ On your main account head back to the Entra ID home page <br/>
 On the left menu, under "Monitoring" click "Sign-in logs" <br/>
 Here you can see your users under "user principal name" or "users" <br/>
 You can see whether or not your conditional access policies were successful under "conditional access" with a success or Failure <br/>
-(Note: if your status under "status" was interupted, this was most likely during your inital new login process so failure for the conditional access is expected) <br/>
+(Note: if your status under "status" was interrupted, this was most likely during your inital new login process so failure for the conditional access is expected) <br/>
 <img src="https://i.imgur.com/hK7QFnw.png" height="80%" width="80%" alt="EntraID"/>
 <br/>
 <br/>
@@ -234,14 +234,14 @@ For the non-prod resource group assign the employees group as reader and the adm
 
 Login to an employee account in an incognito window and check to see that you can only see the intial resource group you created and the non-prod one <br/>
 You should not be able to see the Prod resource group <br/>
-Just like you did previously use the alert method to try and verify if the permissions are set right with the non-prod resource group <br/>
+Just like you did previously use the alert method to try and verify if the permisions are set right with the non-prod resource group <br/>
 <img src="https://i.imgur.com/irXIYwW.png" height="80%" width="80%" alt="EntraID"/>
 <br/>
 <br/>
 
 
 Login to an Admin account in an incognito window and check to see that you can see all 3 resource groups that you created <br/>
-Just like you did previously use the alert method to try and verify if the permissions are set right <br/>
+Just like you did previously use the alert method to try and verify if the permisions are set right <br/>
 <img src="https://i.imgur.com/zppWtsd.png" height="80%" width="80%" alt="EntraID"/>
 <br/>
 <br/>
@@ -252,9 +252,9 @@ Congrats you have created RBAC for different levels in a simulated enterprise en
 
 If for ssome reasons after you create your role assignments and you go to login to the employee or admin accounts and don't see the resource groupss you think you should I have a fix <br/>
 For ssome reason sometimes it seems the role assignments do not propagate properly <br/>
-If you want to check this yourself, on your main account click on the resource group you are having issues with and navigate to "Access Control (IAM)" <br/>
+If you want to check this yourself, on your main account click on the resource group you are having isues with and navigate to "Access Control (IAM)" <br/>
 Click on the blue "Check Access" button <br/>
-Then type in the group or users your having issues with <br/>
+Then type in the group or users your having isues with <br/>
 <img src="https://i.imgur.com/jyg8c1P.png" height="80%" width="80%" alt="EntraID"/>
 <br/>
 <br/>
@@ -275,7 +275,7 @@ At the top click delete <br/>
 Please note that if the group has an assignment and you still aren't seeing the resource groups on your employee or admin account, it is possible the users did not inherit the role assignment <br/>
 You can use the check access method on indivudal users to confirm this <br/>
 If for some reason it just doesn't want to work the a workaround is to create a role assignment for each user individually <br/>
-Hopefully these fix any of the not seeing resource group issues you have! <br/>
+Hopefully these fix any of the not seeing resource group isues you have! <br/>
 
 
 
