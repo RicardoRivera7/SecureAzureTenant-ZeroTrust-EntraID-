@@ -165,12 +165,24 @@ Once done you should be logged in as the user you chose <br/>
 <br/>
 <br/>
 
+<h4>Verifying Role assignmentss</h4>
 Let's check to see if our other policies such as Reader and Contributer are working <br/>
 If you are signed in as employee you should only have Reader permissions and can't create new things <br/>
 To test this go to "Resource Groups" or "Virtual Machines" <br/>
-At the top you should see a message and in there it says "Code:AccessDenied" <br/>
+You should see the Resource group you created, click on it to go into it <br/>
+<img src="https://i.imgur.com/VzUEbwi.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+On the left menu under Monitoring, click on Alerts <br/>
+Click on the blue "Create alert rule" button <br/>
+Click on the blue "See all signals" text and pick anything except "Custom log search" <br/>
+Click "Apply" and then click "Review + Create" <br/>
+Go to details and under "Alert rule name" enter anything like test <br/>
+Click "Review + Create" and then "Create" <br/>
+There should be an error message that appears, that's what we want <br/>
 This means our employee Reader policy is working! <br/>
-<img src="https://i.imgur.com/lqem0XB.png" height="80%" width="80%" alt="EntraID"/>
+<img src="https://i.imgur.com/P89Vrd6.png" height="80%" width="80%" alt="EntraID"/>
 <br/>
 <br/>
 
@@ -178,8 +190,11 @@ This means our employee Reader policy is working! <br/>
 Now let's test the Admin user <br/>
 Login to the Admin account doing the same setup steps you had to for the employee account <br/>
 To test this go to "Resource Groups" or "Virtual Machines" <br/>
-You should be able to view the resource groups that are available and create a new resource group (same thing with the virtual machines) <br/>
-<img src="https://i.imgur.com/iu82rrh.png" height="80%" width="80%" alt="EntraID"/>
+You should see the Resource group you created, click on it to go into it <br/>
+Like with the employee account try and create an alert <br/>
+This time you'll still get an error message but it should be different, thiss will be an error to do with the free subsscription not being able to use this service <br/>
+If you see this new error message congrats the Admin Contributer policy works <br/>
+<img src="https://i.imgur.com/UztYbyH.png" height="80%" width="80%" alt="EntraID"/>
 <br/>
 <br/>
 
@@ -194,6 +209,74 @@ You can see whether or not your conditional access policies were successful unde
 <br/>
 <br/>
 
-Bonus: Don't forget to make sure to test your Break-Glass-Admin by logging into it, to test it works make sure when you login that MFA is not required and that you can create resource groups!
+Bonus: Don't forget to make sure to test your Break-Glass-Admin by logging into it, to test it works make sure when you login that MFA is not required and that you can create resource groups! 
+<br/>
+<br/>
+
+
+<h2>Creating RBAC for Different environments</h2>
+
+Let's create multiple resource groups to simulate an enterprise environment <br/>
+Create a new resource group named Prod <br/>
+Create another called non-prod <br/>
+You should have 3 resource groups total now <br/>
+<img src="https://i.imgur.com/4gXAQ7i.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+Now similar to before we are going to create new role assignments for your Admins and employees <br/>
+For the Prod resource group only assign the admins group as a contributer <br/>
+For the non-prod resource group assign the employees group as reader and the admin group as contriubter <br/>
+<img src="https://i.imgur.com/2TDJoDJ.png" height="80%" width="80%" alt="EntraID"/>
+<img src="https://i.imgur.com/N00Tvm2.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+Login to an employee account in an incognito window and check to see that you can only see the intial resource group you created and the non-prod one <br/>
+You should not be able to see the Prod resource group <br/>
+Just like you did previously use the alert method to try and verify if the permissiosn are set right with the non-prod resource group <br/>
+<img src="https://i.imgur.com/irXIYwW.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+
+Login to an Admin account in an incognito window and check to see that you can see all 3 resource groups that you created <br/>
+Just like you did previously use the alert method to try and verify if the permissiosn are set right <br/>
+<img src="https://i.imgur.com/zppWtsd.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+Congrats you have created RBAC for different levels in a simulated enetrprise environment <br/>
+
+<h2>Troubleshooting</h2>
+
+If for ssome reasons after you create your role assignments and you go to login to the employee or admin accounts and don't see the resource groupss you think you should I have a fix <br/>
+For ssome reason sometimes it seems the role assignments do not propogate properly <br/>
+If you want to check this yourself, on your main account click on the resource group you are having issues with and navigate to "Access Control (IAM)" <br/>
+Click on the blue "Check Access" button <br/>
+Then type in the group or users your having issues with <br/>
+<img src="https://i.imgur.com/jyg8c1P.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+Click on the group or user <br/>
+It should show that it has a role assignment, like the below screenshot <br/>
+<img src="https://i.imgur.com/jyg8c1P.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+If it shows nothing you should delete that role assignment and re-create it to check if it propagates correctly <br/>
+To delete the role assignment, simply click on the "Role assignments" section, find the group and select the checkbox next to it <br/>
+At the top click delete <br/> 
+<img src="https://i.imgur.com/wDo6Pqd.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
+
+Please note that if the group has an assignment and you still aren't seeing the resource groups on your employee or admin account, it is possible the users did not inherit the role assignment <br/>
+You can use the check access method on indivudal users to confirm this <br/>
+If for some reason it just doesn't want to work the a workaround is to create a role assignment for each user individually <br/>
+Hopefully these fix any of the not seeing resource group issues you have! <br/>
+
+
 
 </p>
