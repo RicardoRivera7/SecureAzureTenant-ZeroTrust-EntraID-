@@ -94,7 +94,6 @@ Now let's make sure Authenticator and SMS is enabled <br/>
 On the left menu select "security" then click "Authentication" methods <br/>
 Check to see if both SMS and Microsoft Authenticator are enabled <br/>
 If not, click on the option (Ex: SMS) and toggle the "Enable" slider to on (blue) <br/>
-<em>Note: don't mind the other resource groups you see in my screenshot, those were just for fun, you will only have the one you made</em> <br/>
 <img src="https://i.imgur.com/zbXYz16.png" height="80%" width="80%" alt="EntraID"/>
 <br/>
 <br/>
