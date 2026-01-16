@@ -164,7 +164,8 @@ Once done you should be logged in as the user you chose <br/>
 <br/>
 <br/>
 
-<h4>Verifying Role assignmentss</h4>
+<h4>Verifying Role assignments</h4>
+
 Let's check to see if our other policies such as Reader and Contributer are working <br/>
 If you are signed in as employee you should only have Reader permissions and can't create new things <br/>
 To test this go to "Resource Groups" or "Virtual Machines" <br/>
