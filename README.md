@@ -5,7 +5,7 @@
 Using Microsoft Azure and Entra ID, the goal is to create groups of users (Employees, Admins) then setting Role Based Acess Controls, and conditional access controls such as Multifactor Authentication. We will then test these controls by signing into different accounts to see if they work as intended.
 <br />
 
-<h2>Architecture Summary</h2> 
+<h2>Architecture Summary & Diagram</h2> 
 <b> 
 Users and Admins are created and added to groups <br/>
 Entra ID is used to authenticate users attempting to login <br/>
@@ -16,7 +16,12 @@ Sign-in logs are used to validate and audit access decisions  <br/>
 <br/>
 
 Bonus: A Break-Glass-Admin is created, it does not need MFA and is used in emergencies when services and functions are not working such as MFA itself </b> <br/>
+<br/>
+<br/>
 
+<img src="https://i.imgur.com/iJELzyN.png" height="80%" width="80%" alt="EntraID"/>
+<br/>
+<br/>
 
 <h2>Prerequisites</h2>
 - <b>Make a Microsoft Azure Account: https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account </b> <br/>
